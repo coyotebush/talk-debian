@@ -3,6 +3,11 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{moresize}
+\usepackage[normalem]{ulem}
+
+\renewcommand<>{\sout}[1]{
+  \alt#2{\beameroriginal{\sout}{#1}}{#1}
+}
 
 \usetheme{Boadilla}
 \usecolortheme{beaver}
@@ -59,9 +64,9 @@
 
   1999: First derivatives
 
-  (2000: Knoppix, 2004: Ubuntu)
+  2000: Knoppix
 
-  TODO family tree?
+  2004: Ubuntu
 
 \end{frame}
 
@@ -80,6 +85,38 @@
   (Debian Constitution)
 
 \end{frame}
+
+\begin{frame}
+  \includegraphics{rms}
+\end{frame}
+
+\begin{frame}[fragile]
+\scriptsize
+\begin{verbatim}
+$ vrms
+              Non-free packages installed on gwaihir
+
+firmware-iwlwifi                    Binary firmware for Intel Wireless cards
+firmware-linux                      Binary firmware for various drivers in the Linux kerne
+firmware-linux-nonfree              Binary firmware for various drivers in the Linux kerne
+intel-microcode                     Processor microcode firmware for Intel CPUs
+skype                               Wherever you are, wherever they are
+virtualbox-guest-additions-iso      guest additions iso image for VirtualBox
+
+               Contrib packages installed on gwaihir
+
+flashplugin-nonfree                 Adobe Flash Player - browser plugin
+iucode-tool                         Intel processor microcode tool
+ttf-mscorefonts-installer           Installer for Microsoft TrueType core fonts
+virtualbox                          x86 virtualization solution - base binaries
+virtualbox-dkms                     x86 virtualization solution - kernel module sources fo
+virtualbox-qt                       x86 virtualization solution - Qt based user interface
+
+  6 non-free packages, 0.3% of 2235 installed packages.
+  6 contrib packages, 0.3% of 2235 installed packages.
+\end{verbatim}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{``The Universal Operating System''}
@@ -108,27 +145,30 @@
 \section{Package management}
 
 \begin{frame}
-  \frametitle{Debian package management}
-  \begin{itemize}
-    \item dpkg, .deb
-    \item apt: Rich dependency system (Depends, Recommends, Suggests)
-    \item Frontends
-      \begin{itemize}
-        \item apt-get / apt-cache
-        \item aptitude
-        \item synaptic
-      \end{itemize}
-  \end{itemize}
+  \frametitle{Debian package management layers}
+
+  dpkg (\texttt{.deb} files)
+
+  apt (dependencies)
+
+  frontends
+
 \end{frame}
 
-\begin{frame}[fragile]
-\begin{verbatim}
-# dpkg -i skype.deb
-# aptitude install mutt
-# aptitude update
-# aptitude upgrade
-# aptitude
-\end{verbatim}
+\begin{frame}
+  \frametitle{Debian package management}
+
+  \sout<2>{\texttt{\$ apt-get remove emacs}\\
+    \texttt{\$ apt-get install vim-gtk}}
+
+  \invisible<1>{\texttt{\$ aptitude remove emacs}\\
+    \texttt{\$ aptitude install vim-gtk}}
+\end{frame}
+
+\begin{frame}
+  \texttt{\$ aptitude}
+
+  \includegraphics[height=7cm]{aptitude}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -147,29 +187,12 @@ There are no Easter Eggs in this program.
 \end{frame}
 
 \begin{frame}[fragile]
-\scriptsize
 \begin{verbatim}
-$ vrms
-              Non-free packages installed on gwaihir
-
-firmware-iwlwifi                    Binary firmware for Intel Wireless cards
-firmware-linux                      Binary firmware for various drivers in the Linux kerne
-firmware-linux-nonfree              Binary firmware for various drivers in the Linux kerne
-intel-microcode                     Processor microcode firmware for Intel CPUs
-skype                               Wherever you are, wherever they are
-virtualbox-guest-additions-iso      guest additions iso image for VirtualBox
-
-               Contrib packages installed on gwaihir
-
-flashplugin-nonfree                 Adobe Flash Player - browser plugin
-iucode-tool                         Intel processor microcode tool
-ttf-mscorefonts-installer           Installer for Microsoft TrueType core fonts
-virtualbox                          x86 virtualization solution - base binaries
-virtualbox-dkms                     x86 virtualization solution - kernel module sources fo
-virtualbox-qt                       x86 virtualization solution - Qt based user interface
-
-  6 non-free packages, 0.3% of 2235 installed packages.
-  6 contrib packages, 0.3% of 2235 installed packages.
+$ aptitude update
+$ aptitude upgrade
+$ dpkg -i skype.deb
+$ dpkg -L vim-gtk
+$ dpkg -S /etc/vim/vimrc
 \end{verbatim}
 \end{frame}
 
