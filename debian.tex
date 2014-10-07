@@ -1,5 +1,6 @@
-\documentclass[14pt]{beamer}
+\documentclass[14pt,usepdftitle=false]{beamer}
 
+\usepackage{lmodern}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{moresize}
@@ -34,8 +35,8 @@
 
 \logo{\includegraphics[viewport=274 335 360 440,width=1cm]{openlogo-nd}}
 \title[Debian]{\includegraphics[viewport=274 335 360 440,height=3.5cm]{openlogo}}
-\author[Corey Ford]{Corey Ford\\(\texttt{coyotebush})\vspace{-2em}}
-\institute[CPLUG]{CPLUG\vspace{-2em}}
+\author[Corey Ford]{Corey Ford\\(\texttt{coyotebush})\vspace{-1.5em}}
+\institute{CPLUG\vspace{-2em}}
 \date{2014-10-09}
 
 \begin{document}
@@ -181,6 +182,7 @@ $ apt-get moo
          *  /\---/\ 
             ~~   ~~   
 ..."Have you mooed today?"...
+
 $ aptitude moo
 There are no Easter Eggs in this program.
 \end{verbatim}
